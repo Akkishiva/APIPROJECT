@@ -1,9 +1,5 @@
-name: build and publish Docker file
-
-on:
-  push:
-    branches:
-      - master
+name: Continous Integration
+on: push
 
 jobs:
   build-and-publish:
