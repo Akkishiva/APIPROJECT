@@ -1,6 +1,8 @@
-name: Continous Integration
+name: Build and Publish
 on: push
-
+env:
+  DOCKER_USERNAME: akkishiva
+  DOCKER_PASSWORD: Omganesh@06
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -13,5 +15,5 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: forbsey/go-github-actions
-        username: ${{secrects.DOCKER_USERNAME}}
-        password: ${{secrects.DOCKER_PASSWORD}}    
+        username: ${{env.DOCKER_USERNAME }}
+        password: ${{env.DOCKER_PASSWORD }}    
