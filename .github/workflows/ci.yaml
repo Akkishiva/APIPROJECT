@@ -1,0 +1,23 @@
+name: Continous Integration
+on: push
+env:
+  DB_NAME: orderdetails
+  DB_USER: root
+  DB_PASSWORD: 1234
+jobs:
+  run_code_checks:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Set up MySQL
+      run: 
+       sudo /etc/init.d/mysql start
+       sudo mysql -e 'ALTER USER "${{env.DB_USER}}"@"localhost" IDENTIFIED BY ${{env.DB_PASSWORD}}";' -uroot -proot
+       sudo mysql -e 'CREATE DATABASE ${{env.DB_NAME}};' -u${{DB_NAME}} -p${{env.DB_PASSWORD}}
+    - name: Checkout Repo Code
+      uses: actions/checkout@v3
+    - name: Set Up Go
+      uses: actions/setup-go@v3
+      with:
+       go-version: 1.19
+    - name: Build
+      run: go build -v ./... 
