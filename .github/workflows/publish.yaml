@@ -1,8 +1,8 @@
 name: Build and Publish
 on: push
 env:
-  DOCKER_USERNAME: akkishiva
-  DOCKER_PASSWORD: Omganesh@06
+  DOCKER_USERNAME: username
+  DOCKER_PASSWORD: password
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
